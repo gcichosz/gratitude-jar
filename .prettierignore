@@ -1,0 +1,10 @@
+### Serverless ###
+# Ignore build directory
+.serverless
+
+### Node ###
+# Dependency directories
+node_modules/
+
+# Webpack directories
+.webpack
