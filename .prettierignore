@@ -5,6 +5,3 @@
 ### Node ###
 # Dependency directories
 node_modules/
-
-# Webpack directories
-.webpack
