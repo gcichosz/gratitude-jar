@@ -5,3 +5,7 @@
 ### Node ###
 # Dependency directories
 node_modules/
+
+### OS ###
+# macOS
+.DS_Store
