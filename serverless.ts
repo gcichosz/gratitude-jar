@@ -1,5 +1,7 @@
 import type { AWS } from "@serverless/typescript";
 
+import generatePrintFile from "@functions/generatePrintFile";
+
 const s3Bucket = "app.sloikwdziecznosci.pl";
 
 const serverlessConfiguration: AWS = {
@@ -12,13 +14,27 @@ const serverlessConfiguration: AWS = {
 				localDir: "/app",
 			},
 		],
+		webpack: {
+			webpackConfig: "./webpack.config.js",
+			includeModules: true,
+		},
 	},
-	plugins: ["serverless-s3-sync"],
+	plugins: ["serverless-s3-sync", "serverless-webpack", "serverless-offline"],
 	provider: {
 		name: "aws",
 		region: "eu-central-1",
 		profile: "personal",
+		apiGateway: {
+			minimumCompressionSize: 1024,
+			shouldStartNameWithService: true,
+		},
+		environment: {
+			AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
+		},
+		lambdaHashingVersion: "20201221",
 	},
+	// import the function via paths
+	functions: { generatePrintFile },
 	resources: {
 		Resources: {
 			// Specifying the S3 Bucket

@@ -6,6 +6,9 @@
 # Dependency directories
 node_modules/
 
+# Webpack
+.webpack
+
 ### OS ###
 # macOS
 .DS_Store
