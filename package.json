@@ -24,6 +24,7 @@
 		"prettier": "^2.2.1",
 		"serverless": "^2.33.1",
 		"serverless-offline": "^6.9.0",
+		"serverless-s3-remover": "^0.6.0",
 		"serverless-s3-sync": "^1.17.0",
 		"serverless-webpack": "^5.3.5",
 		"ts-loader": "^8.0.15",

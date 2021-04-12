@@ -13,12 +13,15 @@ const serverlessConfiguration: AWS = {
 				localDir: "/app",
 			},
 		],
+		remover: {
+			buckets: [filesS3Bucket],
+		},
 		webpack: {
 			webpackConfig: "./webpack.config.js",
 			includeModules: true,
 		},
 	},
-	plugins: ["serverless-s3-sync", "serverless-webpack", "serverless-offline"],
+	plugins: ["serverless-s3-sync", "serverless-s3-remover", "serverless-webpack", "serverless-offline"],
 	provider: {
 		name: "aws",
 		region: region,
