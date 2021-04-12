@@ -1,9 +1,7 @@
 import type { AWS } from "@serverless/typescript";
+import { appS3Bucket, filesS3Bucket, region } from "./config";
 
 import generatePrintFile from "@functions/generatePrintFile";
-
-const appS3Bucket = "app.sloikwdziecznosci.pl";
-const filesS3Bucket = "files.sloikwdziecznosci.pl";
 
 const serverlessConfiguration: AWS = {
 	service: "gratitude-jar",
@@ -23,7 +21,7 @@ const serverlessConfiguration: AWS = {
 	plugins: ["serverless-s3-sync", "serverless-webpack", "serverless-offline"],
 	provider: {
 		name: "aws",
-		region: "eu-central-1",
+		region: region,
 		profile: "personal",
 		apiGateway: {
 			minimumCompressionSize: 1024,
