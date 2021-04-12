@@ -2,7 +2,8 @@ import type { AWS } from "@serverless/typescript";
 
 import generatePrintFile from "@functions/generatePrintFile";
 
-const s3Bucket = "app.sloikwdziecznosci.pl";
+const appS3Bucket = "app.sloikwdziecznosci.pl";
+const filesS3Bucket = "files.sloikwdziecznosci.pl";
 
 const serverlessConfiguration: AWS = {
 	service: "gratitude-jar",
@@ -10,7 +11,7 @@ const serverlessConfiguration: AWS = {
 	custom: {
 		s3Sync: [
 			{
-				bucketName: s3Bucket,
+				bucketName: appS3Bucket,
 				localDir: "/app",
 			},
 		],
@@ -37,15 +38,21 @@ const serverlessConfiguration: AWS = {
 	functions: { generatePrintFile },
 	resources: {
 		Resources: {
-			// Specifying the S3 Bucket
 			WebAppS3Bucket: {
 				Type: "AWS::S3::Bucket",
 				Properties: {
-					BucketName: s3Bucket,
+					BucketName: appS3Bucket,
 					AccessControl: "PublicRead",
 					WebsiteConfiguration: {
 						IndexDocument: "index.html",
 					},
+				},
+			},
+			GratitudeFilesS3Bucket: {
+				Type: "AWS::S3::Bucket",
+				Properties: {
+					BucketName: filesS3Bucket,
+					AccessControl: "Private",
 				},
 			},
 			// Specifying the policies
@@ -61,7 +68,7 @@ const serverlessConfiguration: AWS = {
 							Effect: "Allow",
 							Principal: "*",
 							Action: ["s3:GetObject"],
-							Resource: `arn:aws:s3:::${s3Bucket}/*`,
+							Resource: `arn:aws:s3:::${appS3Bucket}/*`,
 						},
 					},
 				},
