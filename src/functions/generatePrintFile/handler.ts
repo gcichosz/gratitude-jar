@@ -3,12 +3,12 @@ import "source-map-support/register";
 import type { ValidatedEventAPIGatewayProxyEvent } from "@libs/apiGateway";
 import { formatJSONResponse } from "@libs/apiGateway";
 import { middyfy } from "@libs/lambda";
-
-import schema from "./schema";
 import { Credentials } from "aws-sdk";
-import { v4 } from "uuid";
 import * as AWS from "aws-sdk";
 import { filesS3Bucket, region } from "config";
+import { v4 } from "uuid";
+
+import schema from "./schema";
 
 const generatePrintFile: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
 	const s3 = new AWS.S3({

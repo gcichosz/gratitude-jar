@@ -8,3 +8,15 @@ node_modules/
 
 # Webpack
 .webpack
+
+# Configuration
+.env
+
+# TypeScript
+*.js
+*.js.map
+!app/app.js
+
+### OS ###
+# macOS
+.DS_Store

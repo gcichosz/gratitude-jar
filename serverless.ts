@@ -1,7 +1,7 @@
-import type { AWS } from "@serverless/typescript";
-import { appS3Bucket, filesS3Bucket, region } from "./config";
-
 import generatePrintFile from "@functions/generatePrintFile";
+import type { AWS } from "@serverless/typescript";
+
+import { appS3Bucket, filesS3Bucket, region } from "./config";
 
 const serverlessConfiguration: AWS = {
 	service: "gratitude-jar",
