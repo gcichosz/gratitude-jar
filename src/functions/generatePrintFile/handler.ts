@@ -18,15 +18,26 @@ const generatePrintFile: ValidatedEventAPIGatewayProxyEvent<typeof schema> = asy
 			secretAccessKey: process.env.SECRET_ACCESS_KEY,
 		}),
 	});
+
+	const fileKey = `${v4()}.txt`;
 	await s3
 		.upload({
 			Bucket: filesS3Bucket,
-			Key: `${v4()}.txt`,
+			Key: fileKey,
 			Body: event.body.gratitudes,
 			ContentType: "text/plain",
 		})
 		.promise();
-	return formatJSONResponse({ gratitudes: event.body.gratitudes.split("\n").toString() });
+
+	const expiry = new Date();
+	expiry.setHours(expiry.getHours() + 1);
+	const downloadUrl = await s3.getSignedUrlPromise("getObject", {
+		Bucket: filesS3Bucket,
+		Key: fileKey,
+		ResponseExpires: expiry,
+	});
+
+	return formatJSONResponse({ downloadUrl });
 };
 
 export const main = middyfy(generatePrintFile);
