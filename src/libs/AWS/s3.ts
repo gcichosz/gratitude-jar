@@ -19,6 +19,7 @@ export const uploadGratitudesFile = async (body: S3.Body): Promise<string> => {
 			Key: fileKey,
 			Body: body,
 			ContentType: "text/plain",
+			ContentDisposition: 'attachment; filename="wdziecznosci.txt"',
 		})
 		.promise();
 

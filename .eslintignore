@@ -17,6 +17,10 @@ node_modules/
 *.js.map
 !app/app.js
 
+### Front-end ###
+# HTML
+*.html
+
 ### OS ###
 # macOS
 .DS_Store
