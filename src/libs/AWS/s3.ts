@@ -3,7 +3,7 @@ import S3 from "aws-sdk/clients/s3";
 import { filesS3Bucket, region } from "config";
 import { v4 } from "uuid";
 
-export const uploadGratitudesFile = async (body: S3.Body): Promise<string> => {
+export const uploadGratitudesFile = async (base64Body: string): Promise<string> => {
 	const s3 = new S3({
 		region: region,
 		credentials: new Credentials({
@@ -12,14 +12,14 @@ export const uploadGratitudesFile = async (body: S3.Body): Promise<string> => {
 		}),
 	});
 
-	const fileKey = `${v4()}.txt`;
+	const fileKey = `${v4()}.docx`;
 	await s3
 		.upload({
 			Bucket: filesS3Bucket,
 			Key: fileKey,
-			Body: body,
-			ContentType: "text/plain",
-			ContentDisposition: 'attachment; filename="wdziecznosci.txt"',
+			Body: Buffer.from(base64Body, "base64"),
+			ContentType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			ContentDisposition: 'attachment; filename="wdziecznosci.docx"',
 		})
 		.promise();
 

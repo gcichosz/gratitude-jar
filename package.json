@@ -12,6 +12,7 @@
 		"@middy/http-cors": "^2.0.1",
 		"@middy/http-json-body-parser": "^1.5.2",
 		"aws-sdk": "^2.884.0",
+		"docx": "^6.0.3",
 		"dotenv": "^8.2.0",
 		"source-map-support": "^0.5.19",
 		"uuid": "^8.3.2"
