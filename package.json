@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"description": "Simple Gratitude Jar website",
 	"scripts": {
+		"debug": "export SLS_DEBUG=* && node --inspect ./node_modules/.bin/serverless offline -s dev",
 		"lint": "eslint .",
 		"prepare": "husky install"
 	},
