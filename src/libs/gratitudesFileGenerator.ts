@@ -1,4 +1,5 @@
 import {
+	AlignmentType,
 	Document,
 	HeightRule,
 	ISectionOptions,
@@ -23,9 +24,9 @@ export const generateGratitudesFile = async (gratitudesInput: string): Promise<s
 	const gratitudes = gratitudesInput.split("\n");
 
 	const gratitudeCells = gratitudes.map(
-		(g) =>
+		(gratitude) =>
 			new TableCell({
-				children: [new Paragraph(g)],
+				children: [new Paragraph({ text: gratitude, alignment: AlignmentType.CENTER })],
 				verticalAlign: VerticalAlign.CENTER,
 				width: { size: A4_DXA_WIDTH / 3, type: WidthType.DXA },
 			}),
