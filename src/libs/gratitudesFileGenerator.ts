@@ -21,7 +21,10 @@ export const generateGratitudesFile = async (gratitudesInput: string): Promise<s
 	const gratitudeTable = new Table({
 		rows: gratitudeRows,
 	});
-	const gratitudesSection: ISectionOptions = { children: [gratitudeTable] };
+	const gratitudesSection: ISectionOptions = {
+		children: [gratitudeTable],
+		properties: { page: { ...pageStyles } },
+	};
 
 	const gratitudesFile = new Document({ sections: [gratitudesSection] });
 	return await Packer.toBase64String(gratitudesFile);
