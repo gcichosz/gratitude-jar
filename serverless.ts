@@ -25,7 +25,7 @@ const serverlessConfiguration: AWS = {
 	provider: {
 		name: "aws",
 		region: region,
-		profile: "personal",
+		profile: "gratitude-jar",
 		apiGateway: {
 			minimumCompressionSize: 1024,
 			shouldStartNameWithService: true,
