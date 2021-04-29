@@ -1,9 +1,10 @@
 import { Credentials } from "aws-sdk";
 import S3 from "aws-sdk/clients/s3";
 import { filesS3Bucket, region } from "config";
+import type { Readable } from "stream";
 import { v4 } from "uuid";
 
-export const uploadGratitudesFile = async (base64Body: string): Promise<string> => {
+export const uploadGratitudesFile = async (fileStream: Readable): Promise<string> => {
 	const s3 = new S3({
 		region: region,
 		credentials: new Credentials({
@@ -12,14 +13,14 @@ export const uploadGratitudesFile = async (base64Body: string): Promise<string> 
 		}),
 	});
 
-	const fileKey = `${v4()}.docx`;
+	const fileKey = `${v4()}.pdf`;
 	await s3
 		.upload({
 			Bucket: filesS3Bucket,
 			Key: fileKey,
-			Body: Buffer.from(base64Body, "base64"),
-			ContentType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-			ContentDisposition: 'attachment; filename="wdziecznosci.docx"',
+			Body: fileStream,
+			ContentType: "application/pdf",
+			ContentDisposition: `attachment; filename="wdziecznosci.pdf"`,
 		})
 		.promise();
 

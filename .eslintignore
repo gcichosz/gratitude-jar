@@ -17,6 +17,9 @@ node_modules/
 *.js.map
 !app/app.js
 
+# Resources
+fonts/
+
 ### Front-end ###
 # HTML
 *.html

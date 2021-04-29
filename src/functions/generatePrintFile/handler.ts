@@ -9,7 +9,7 @@ import schema from "./schema";
 
 const generatePrintFile: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
 	try {
-		const gratitudesFile = await generateGratitudesFile(event.body.gratitudes);
+		const gratitudesFile = generateGratitudesFile(event.body.gratitudes);
 		const downloadUrl = await uploadGratitudesFile(gratitudesFile);
 		return formatJSONResponse({ downloadUrl });
 	} catch (error) {
