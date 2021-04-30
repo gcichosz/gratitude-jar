@@ -5,6 +5,10 @@ const serverlessConfiguration: AWS = {
 	service: "gratitude-jar",
 	frameworkVersion: "2",
 	custom: {
+		s3: {
+			host: "localhost",
+			directory: "./.buckets",
+		},
 		s3Sync: [
 			{
 				bucketName: "${self:provider.environment.APP_BUCKET}",
@@ -19,7 +23,13 @@ const serverlessConfiguration: AWS = {
 			includeModules: true,
 		},
 	},
-	plugins: ["serverless-s3-sync", "serverless-s3-remover", "serverless-webpack", "serverless-offline"],
+	plugins: [
+		"serverless-s3-sync",
+		"serverless-s3-remover",
+		"serverless-webpack",
+		"serverless-s3-local",
+		"serverless-offline",
+	],
 	provider: {
 		name: "aws",
 		region: "eu-central-1",

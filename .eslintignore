@@ -2,6 +2,9 @@
 # Ignore build directory
 .serverless
 
+# Ignore S3 local directory
+.buckets
+
 ### Node ###
 # Dependency directories
 node_modules/

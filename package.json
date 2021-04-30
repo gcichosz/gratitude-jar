@@ -34,6 +34,7 @@
 		"serverless": "^2.33.1",
 		"serverless-copy-webpack-plugin": "^1.0.1",
 		"serverless-offline": "^6.9.0",
+		"serverless-s3-local": "^0.6.14",
 		"serverless-s3-remover": "^0.6.0",
 		"serverless-s3-sync": "^1.17.0",
 		"serverless-webpack": "^5.3.5",
