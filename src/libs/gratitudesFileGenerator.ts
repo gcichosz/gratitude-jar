@@ -9,7 +9,7 @@ const ROWS = 10;
 const COLUMN_WIDTH = A4_WIDTH / COLUMNS;
 const ROW_WIDTH = A4_HEIGHT / ROWS;
 const DRAW_GRID = false;
-const FONT_SIZE = 14;
+const FONT_SIZE = 16;
 const TEXT_X_START = 0;
 const TEXT_Y_START = ROW_WIDTH / 2;
 
