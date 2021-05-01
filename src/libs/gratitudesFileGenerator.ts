@@ -58,12 +58,16 @@ const drawGrid = (doc: PDFKit.PDFDocument) => {
 	for (let i = 1; i < COLUMNS; i++) {
 		doc.moveTo(COLUMN_WIDTH * i, 0)
 			.lineTo(COLUMN_WIDTH * i, A4_HEIGHT)
+			.lineWidth(1)
+			.dash(5, { space: 10 })
 			.stroke();
 	}
 
 	for (let i = 1; i < ROWS; i++) {
 		doc.moveTo(0, ROW_WIDTH * i)
 			.lineTo(A4_WIDTH, ROW_WIDTH * i)
+			.lineWidth(1)
+			.dash(5, { space: 10 })
 			.stroke();
 	}
 };
