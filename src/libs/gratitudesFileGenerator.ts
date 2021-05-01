@@ -11,7 +11,7 @@ const ROW_WIDTH = A4_HEIGHT / ROWS;
 const DRAW_GRID = false;
 const FONT_SIZE = 14;
 const TEXT_X_START = 0;
-const TEXT_Y_START = ROW_WIDTH / 2 - FONT_SIZE / 2;
+const TEXT_Y_START = ROW_WIDTH / 2;
 
 export const generateGratitudesFile = (gratitudesInput: string): Readable => {
 	const gratitudes = gratitudesInput.split("\n");
@@ -27,6 +27,7 @@ export const generateGratitudesFile = (gratitudesInput: string): Readable => {
 		const gratitude = gratitudes[i];
 		doc.font(resolve(__dirname, "Caveat-Regular.ttf")).text(gratitude, textX, textY, {
 			align: "center",
+			baseline: "middle",
 			width: COLUMN_WIDTH,
 		});
 
