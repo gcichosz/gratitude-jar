@@ -13,6 +13,7 @@ const FONT_SIZE = 16;
 const TEXT_X_START = 0;
 const TEXT_Y_START = ROW_WIDTH / 2;
 const MAGIC_Y_OFFSET = FONT_SIZE / 2 + 2;
+const LONG_LINE_THRESHOLD = 35;
 
 export const generateGratitudesFile = (gratitudesInput: string): Readable => {
 	const gratitudes = gratitudesInput.split("\n");
@@ -26,7 +27,7 @@ export const generateGratitudesFile = (gratitudesInput: string): Readable => {
 	let textY = TEXT_Y_START;
 	for (let i = 0; i < gratitudes.length; i++) {
 		const gratitude = gratitudes[i];
-		const offsetY = Math.floor(gratitude.length / 35) * MAGIC_Y_OFFSET;
+		const offsetY = Math.floor(gratitude.length / LONG_LINE_THRESHOLD) * MAGIC_Y_OFFSET;
 
 		doc.font(resolve(__dirname, "Caveat-Regular.ttf")).text(gratitude, textX, textY - offsetY, {
 			align: "center",
