@@ -2,18 +2,19 @@ import { resolve } from "path";
 import PDFDocument from "pdfkit";
 import { PassThrough, Readable } from "stream";
 
+const COLUMNS = process.env.COLUMNS ? parseInt(process.env.COLUMNS, 10) : 3;
+const ROWS = process.env.ROWS ? parseInt(process.env.ROWS, 10) : 10;
+const FONT_SIZE = process.env.FONT_SIZE ? parseInt(process.env.FONT_SIZE, 10) : 16;
+const DRAW_GRID = process.env.DRAW_GRID === "true";
+const LONG_LINE_THRESHOLD = process.env.LONG_LINE_THRESHOLD ? parseInt(process.env.LONG_LINE_THRESHOLD, 10) : 35;
+
 const A4_WIDTH = 595.28;
 const A4_HEIGHT = 841.89;
-const COLUMNS = 3;
-const ROWS = 10;
 const COLUMN_WIDTH = A4_WIDTH / COLUMNS;
 const ROW_WIDTH = A4_HEIGHT / ROWS;
-const DRAW_GRID = false;
-const FONT_SIZE = 16;
 const TEXT_X_START = 0;
 const TEXT_Y_START = ROW_WIDTH / 2;
 const MAGIC_Y_OFFSET = FONT_SIZE / 2 + 2;
-const LONG_LINE_THRESHOLD = 35;
 
 export const generateGratitudesFile = (gratitudesInput: string): Readable => {
 	const gratitudes = gratitudesInput.split("\n");

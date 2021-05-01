@@ -42,6 +42,11 @@ const serverlessConfiguration: AWS = {
 			AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
 			FILES_BUCKET: "files.sloikwdziecznosci.pl",
 			APP_BUCKET: "app.sloikwdziecznosci.pl",
+			COLUMNS: "3",
+			ROWS: "10",
+			FONT_SIZE: "16",
+			DRAW_GRID: "false",
+			LONG_LINE_THRESHOLD: "35",
 		},
 		lambdaHashingVersion: "20201221",
 		iamRoleStatements: [
