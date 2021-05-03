@@ -27,6 +27,12 @@ fonts/
 # HTML
 *.html
 
+# Images
+*.jpg
+
+# Styles
+*.css
+
 ### OS ###
 # macOS
 .DS_Store
