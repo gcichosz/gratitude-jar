@@ -23,6 +23,10 @@ body {
 	background-color: #fff;
 }
 
+header {
+	margin: 1rem;
+}
+
 .header-image {
 	background: url("./header_background.jpg") no-repeat center center;
 	background-size: cover;
@@ -31,6 +35,7 @@ body {
 }
 
 h1 {
+	background-color: rgba(255, 255, 255, 0.8);
 	color: var(--maincolor);
 	font-size: 3rem;
 	margin-left: auto;
@@ -41,6 +46,7 @@ h1 {
 .showcase {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	margin: 1rem;
 }
 
 .showcase > div {
@@ -62,7 +68,8 @@ h1 {
 }
 
 .instruction {
-	padding: 5rem;
+	padding: 3rem;
+	margin: 1rem;
 }
 
 .generator {
@@ -78,6 +85,7 @@ h1 {
 
 .generator form textarea {
 	font-family: "Lato", var(--font-family-sans-serif);
+	font-size: 1rem;
 	height: 10rem;
 	margin-bottom: 2rem;
 }
@@ -99,6 +107,6 @@ footer p {
 	color: white;
 	font-size: 0.75rem;
 	margin: 0;
-	padding-right: 1rem;
+	padding: 1rem;
 	text-align: right;
 }
