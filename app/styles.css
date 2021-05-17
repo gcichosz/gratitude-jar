@@ -72,6 +72,28 @@ h1 {
 	margin: 1rem;
 }
 
+.instruction h2 {
+	text-align: center;
+}
+
+.instruction--process {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.instruction--process--step {
+	text-align: center;
+	flex-basis: 27%;
+	margin: 3rem;
+}
+
+.instruction--process--step h3 {
+	font-size: 3rem;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 .generator {
 	background-color: var(--maincolor);
 	padding: 5rem;
