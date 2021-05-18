@@ -18,10 +18,18 @@ const saveFile = (downloadUrl) => {
 	downloadAnchor.click();
 };
 
-const onButtonClicked = async () => {
+const onButtonClicked = async (event) => {
 	const gratitudes = document.querySelector("textarea").value;
+	const button = event.target;
+
+	button.disabled = true;
+	button.textContent = "Generowanie...";
+
 	const downloadUrl = await generateFile(gratitudes);
 	saveFile(downloadUrl);
+
+	button.disabled = false;
+	button.textContent = "Wygeneruj plik";
 };
 
 const onDocumentLoaded = () => {
