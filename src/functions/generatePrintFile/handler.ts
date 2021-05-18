@@ -7,7 +7,7 @@ export const main = async (event: APIGatewayProxyEventV2): Promise<APIGatewayPro
 	try {
 		const gratitudesFile = generateGratitudesFile(event.body);
 		const downloadUrl = await uploadGratitudesFile(gratitudesFile);
-		return formatResponse(200, { downloadUrl });
+		return formatResponse(200, downloadUrl);
 	} catch (error) {
 		return formatResponse(500, error);
 	}

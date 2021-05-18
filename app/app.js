@@ -8,8 +8,8 @@ const generateFile = async (gratitudes) => {
 		},
 		body: JSON.stringify(gratitudes),
 	});
-	const responseData = await response.json();
-	return responseData.downloadUrl;
+	const downloadUrl = await response.json();
+	return downloadUrl;
 };
 
 const saveFile = (downloadUrl) => {
