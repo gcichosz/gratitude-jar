@@ -6,7 +6,7 @@ const generateFile = async (gratitudes) => {
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ gratitudes }),
+		body: JSON.stringify(gratitudes),
 	});
 	const responseData = await response.json();
 	return responseData.downloadUrl;
