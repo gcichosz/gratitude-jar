@@ -106,6 +106,10 @@ h1 {
 	align-items: center;
 }
 
+.generator form h2 {
+	color: white;
+}
+
 .generator form textarea {
 	font-family: "Lato", var(--font-family-sans-serif);
 	font-size: 1rem;
