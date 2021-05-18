@@ -4,9 +4,9 @@ const generateFile = async (gratitudes) => {
 	const response = await fetch(API_URL, {
 		method: "POST",
 		headers: {
-			"Content-Type": "application/json",
+			"Content-Type": "text/plain",
 		},
-		body: JSON.stringify(gratitudes),
+		body: gratitudes,
 	});
 	const downloadUrl = await response.json();
 	return downloadUrl;
