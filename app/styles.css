@@ -27,19 +27,35 @@ header {
 	margin: 1rem;
 }
 
-.header-image {
-	background: url("./header_background.jpg") no-repeat center center;
-	background-size: cover;
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+.header-wrap {
+	position: relative;
+	height: 29.5rem;
 }
 
-h1 {
-	background-color: rgba(255, 255, 255, 0.8);
+.header-wrap:before {
+	content: " ";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	background: url("./header_background.jpg") no-repeat center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.header-content {
+	position: relative;
+}
+
+.header-content h1 {
 	color: var(--maincolor);
-	font-size: 3rem;
-	margin-left: auto;
-	margin-right: auto;
+	font-size: 5rem;
+	margin: 0 auto 0 auto;
+	padding-bottom: 11rem;
+	padding-top: 11rem;
 	text-align: center;
 }
 
