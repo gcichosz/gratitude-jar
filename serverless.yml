@@ -1,0 +1,95 @@
+service: gratitude-jar
+
+frameworkVersion: "2"
+
+provider:
+    name: aws
+    region: eu-central-1
+    profile: gratitude-jar
+    apiGateway:
+        minimumCompressionSize: 1024
+        shouldStartNameWithService: true
+    environment:
+        AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
+        FILES_BUCKET: files.sloikwdziecznosci.pl
+        APP_BUCKET: app.sloikwdziecznosci.pl
+        COLUMNS: "3"
+        ROWS: "10"
+        FONT_SIZE: "16"
+        DRAW_GRID: "false"
+        LONG_LINE_THRESHOLD: "35"
+    lambdaHashingVersion: "20201221"
+    iamRoleStatements:
+        - Effect: Allow
+          Action:
+              - s3:GetObject
+              - s3:GetObjectAcl
+              - s3:PutObject
+              - s3:PutObjectAcl
+              - s3:DeleteObject
+              - s3:GetSignedUrl
+          Resource: "*"
+
+custom:
+    bundle:
+        copyFiles:
+            - from: "fonts/*"
+              to: "./src"
+        externals:
+            - pdfkit
+    remover:
+        buckets:
+            - ${self:provider.environment.FILES_BUCKET}
+    s3:
+        host: localhost
+        directory: "./.buckets"
+    s3Sync:
+        - bucketName: ${self:provider.environment.APP_BUCKET}
+          localDir: "/app"
+
+package:
+    individually: true
+
+functions:
+    generatePrintFile:
+        handler: src/generatePrintFile.handler
+        events:
+            - http:
+                  path: /
+                  method: post
+                  cors: true
+
+resources:
+    Resources:
+        WebAppS3Bucket:
+            Type: AWS::S3::Bucket
+            Properties:
+                BucketName: ${self:provider.environment.APP_BUCKET}
+                AccessControl: PublicRead
+                WebsiteConfiguration:
+                    IndexDocument: index.html
+        GratitudeFilesS3Bucket:
+            Type: AWS::S3::Bucket
+            Properties:
+                BucketName: ${self:provider.environment.FILES_BUCKET}
+                AccessControl: Private
+        WebAppS3BucketPolicy:
+            Type: AWS::S3::BucketPolicy
+            Properties:
+                Bucket:
+                    Ref: WebAppS3Bucket
+                PolicyDocument:
+                    Statement:
+                        Sid: PublicReadGetObject
+                        Effect: Allow
+                        Principal: "*"
+                        Action:
+                            - s3:GetObject
+                        Resource: arn:aws:s3:::${self:provider.environment.APP_BUCKET}/*
+
+plugins:
+    - serverless-s3-sync
+    - serverless-s3-remover
+    - serverless-s3-local
+    - serverless-bundle
+    - serverless-offline

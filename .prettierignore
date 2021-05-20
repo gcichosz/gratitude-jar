@@ -9,9 +9,6 @@
 # Dependency directories
 node_modules/
 
-# Configuration
-.env
-
 # TypeScript
 *.js
 *.js.map
@@ -19,7 +16,6 @@ node_modules/
 
 # Webpack
 .webpack
-!webpack.config.js
 
 ### OS ###
 # macOS

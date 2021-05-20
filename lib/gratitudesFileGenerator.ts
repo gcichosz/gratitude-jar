@@ -30,7 +30,7 @@ export const generateGratitudesFile = (gratitudesInput: string): Readable => {
 		const gratitude = gratitudes[i];
 		const offsetY = Math.floor(gratitude.length / LONG_LINE_THRESHOLD) * MAGIC_Y_OFFSET;
 
-		doc.font(resolve(__dirname, "Caveat-Regular.ttf")).text(gratitude, textX, textY - offsetY, {
+		doc.font(resolve(__dirname, "fonts/Caveat-Regular.ttf")).text(gratitude, textX, textY - offsetY, {
 			align: "center",
 			baseline: "middle",
 			width: COLUMN_WIDTH,

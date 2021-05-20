@@ -12,9 +12,6 @@ node_modules/
 # Webpack
 .webpack
 
-# Configuration
-.env
-
 # TypeScript
 *.js
 *.js.map
